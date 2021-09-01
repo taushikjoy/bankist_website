@@ -1,31 +1,50 @@
 'use strict';
 
-///////////////////////////////////////
-// Modal window
+let openButton = document.querySelector('.nav-link-btn');
+let modal = document.querySelector('.modal');
+let overlay = document.querySelector('.overlay');
+let closeButton = document.querySelector('.form-close-btn');
+// let slideOne = document.querySelector('.slide-1');
+// let slideTwo = document.querySelector('.slide-2');
+// let slideThee = document.querySelector('.slide-3');
+let rightButton = document.querySelector('.btn1');
+let backButton = document.querySelector('.btn2');
+let slides = document.querySelectorAll('.slide');
 
-const modal = document.querySelector('.modal');
-const overlay = document.querySelector('.overlay');
-const btnCloseModal = document.querySelector('.btn--close-modal');
-const btnsOpenModal = document.querySelectorAll('.btn--show-modal');
+openButton.addEventListener('click' , function(){
+    modal.classList.remove('hidden');
+    overlay.classList.remove('hidden')
+})
 
-const openModal = function () {
-  modal.classList.remove('hidden');
-  overlay.classList.remove('hidden');
-};
-
-const closeModal = function () {
+closeButton.addEventListener('click' , ()=> {
   modal.classList.add('hidden');
   overlay.classList.add('hidden');
-};
 
-for (let i = 0; i < btnsOpenModal.length; i++)
-  btnsOpenModal[i].addEventListener('click', openModal);
+})
 
-btnCloseModal.addEventListener('click', closeModal);
-overlay.addEventListener('click', closeModal);
+let curSlide = 0;
+let maxSlide=slides.length;
 
-document.addEventListener('keydown', function (e) {
-  if (e.key === 'Escape' && !modal.classList.contains('hidden')) {
-    closeModal();
+rightButton.addEventListener('click' , function(){
+
+  if (curSlide === maxSlide-1) {
+    curSlide=0;
   }
-});
+  else{
+  curSlide++; }
+  slides.forEach((s , i ) => 
+   ( s.style.transform = `translateX(${100*(i-curSlide)}%)` ) )
+}
+);
+
+backButton.addEventListener('click' , function(){
+
+  if (curSlide === maxSlide-1) {
+    curSlide=0;
+  }
+  else{
+  curSlide--; }
+  slides.forEach((s , i ) => 
+   ( s.style.transform = `translateX(${100*(i+curSlide)}%)` ) )
+}
+);
