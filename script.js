@@ -45,6 +45,6 @@ backButton.addEventListener('click' , function(){
   else{
   curSlide--; }
   slides.forEach((s , i ) => 
-   ( s.style.transform = `translateX(${100*(i+curSlide)}%)` ) )
+   ( s.style.transform = `translateX(${100*(i-curSlide)}%)` ) )
 }
 );

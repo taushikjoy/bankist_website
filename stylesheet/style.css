@@ -38,6 +38,10 @@ header {
   /* background-color: beige; */
 }
 
+section {
+  width: 100%;
+}
+
 .nav-list {
   display: flex;
   justify-content: space-between;
