@@ -23,6 +23,7 @@
 
 body {
   background-color: #f3f3f3;
+  position: relative;
 }
 
 header {
@@ -34,11 +35,27 @@ header {
 .nav {
   display: flex;
   justify-content: space-between;
-  height: 6rem;
+  height: 5rem;
   align-items: center;
+  width: 90%;
 
   padding: 0 3rem;
   /* background-color: beige; */
+}
+
+.sticky {
+  /* display: flex;
+  justify-content: space-between;
+  height: 5rem;
+  align-items: center; */
+  /* width: 90%; */
+  background-color: #f3f3f3;
+
+  padding: 0 3rem;
+  position:fixed;
+  top: 0;
+  left: 0;
+  z-index: 999;
 }
 
 section {

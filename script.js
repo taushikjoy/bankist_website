@@ -40,7 +40,7 @@ rightButton.addEventListener('click' , function(){
 }
 );
 
-let backCurslide = slides.length;
+let backCurslide = slides.length-1;
 let minSlide = 0;
 
 backButton.addEventListener('click' , function(){
@@ -88,4 +88,38 @@ tab1.addEventListener('click' , function(){
   cont2.classList.remove('operations-content-active')
   cont3.classList.remove('operations-content-active')
   cont1.classList.add('operations-content-active')
+})
+
+let buttonScrollto = document.querySelector('.btnScroll');
+let sec1 = document.querySelector('.section-1');
+let nava = document.querySelector('.nav');
+
+buttonScrollto.addEventListener('click' , function(e){
+  // e.preventDefault;
+  const cordsec1 = sec1.getBoundingClientRect();
+  console.log(e.target.getBoundingClientRect()); 
+  console.log(cordsec1);
+
+  console.log(`x/y: ${window.pageXOffset}/${window.pageYOffset}`);
+
+  // window.scrollTo (
+  //  { left : (cordsec1.left +window.pageXOffset) ,
+  //   top : ( cordsec1.top + window.pageYOffset),
+  //   behavior : "smooth"
+  //  }
+  // );
+
+  sec1.scrollIntoView({behavior:"smooth"});
+
+})
+
+let cordsec1 = sec1.getBoundingClientRect();
+window.addEventListener('scroll' , function () {
+
+  console.log(cordsec1);
+  
+  if (window.scrollY >= cordsec1.top ){ 
+    nava.classList.add('sticky')}
+  else {nava.classList.remove('sticky')
+  }
 })
